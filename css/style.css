@@ -1,0 +1,54 @@
+body {
+    background: linear-gradient(45deg, red, green);
+}
+
+#root {
+  display: grid;
+  grid-template-columns: repeat(5, 110px);
+  gap: 20px;
+  justify-content: center;
+}
+
+.img__rotate_block {
+}
+
+.img_block {
+    width: 110px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(250, 232, 205);
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+}
+
+.img_block_2 {
+    transform: rotateY(180deg);
+    transition: 800ms all ease;
+}
+
+.img_block_3 {
+    transform: rotateY(0deg);
+    transition: 800ms all ease;
+}
+
+.img_block::after {
+  content: "";
+  background-image: url(../img/img-in-back-of-card.png);
+  background-repeat: no-repeat;
+  background-size: 100% 160px;
+  width: 110px;
+  height: 160px;
+  border-radius: 20px;
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+}
+
+.img_block img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
