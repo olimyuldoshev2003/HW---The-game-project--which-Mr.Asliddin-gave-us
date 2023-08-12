@@ -1,15 +1,43 @@
 body {
     background: linear-gradient(45deg, red, green);
+    background-repeat: no-repeat;
 }
 
-#root {
+h1 {
+  text-align: center;
+  color: #fff;
+}
+
+p {
+  
+  text-align: center;
+  color: #fff;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+button  {
+  padding: 15px 40px;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  background-color: blue;
+  color: #fff;
+  font-size: 16px;
+}
+
+.root_before {
+  display: none;
+}
+.root {
   display: grid;
   grid-template-columns: repeat(5, 110px);
   gap: 20px;
   justify-content: center;
-}
-
-.img__rotate_block {
 }
 
 .img_block {
@@ -20,18 +48,20 @@ body {
     align-items: center;
     border-radius: 20px;
     background-color: rgb(250, 232, 205);
+    transition: transform 1000ms;
     transform: rotateY(0deg);
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
-.img_block_2 {
+.flipped {
     transform: rotateY(180deg);
-    transition: 800ms all ease;
+    transition: 500ms all ease;
 }
 
-.img_block_3 {
-    transform: rotateY(0deg);
-    transition: 800ms all ease;
+.img_block:active {
+  transform: rotateY(0deg);
+    transition: 500ms all ease;
 }
 
 .img_block::after {
