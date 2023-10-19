@@ -101,41 +101,43 @@ const fruits = [
   },
 ];
 
-const score = document.querySelector(".score")
-const clock = document.querySelector(".clock")
-const timer = document.querySelector(".timer")
-
-
-
-score.textContent = 0
-let cnt = 0
-
-
-
+const score = document.querySelector(".score");
+const clock = document.querySelector(".clock");
+const timer = document.querySelector(".timer");
+const btnStart = document.querySelector("#btn_start");
+const root = document.querySelector(".root_before");
+const forScoreTimer = document.querySelector(".for_score_timer_none");
+const container = document.querySelector(".container_before");
+const forH1 = document.querySelector(".for_h1_before")
+console.log(timer);
+score.innerHTML = 0;
+let cnt = 0;
 
 setInterval(() => {
-  let newDate = new Date()
+  let newDate = new Date();
   clock.innerHTML =
-  newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds(); 
+    newDate.getHours() +
+    ":" +
+    newDate.getMinutes() +
+    ":" +
+    newDate.getSeconds();
 }, 1000);
-
-
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
 
 function flipCard() {
-  if (lockBoard) return
-  if(this === firstCard) return
-  
+  if (lockBoard) return;
+  if (this === firstCard) return;
+
   this.classList.add("flipped");
-  
+
   if (!hasFlippedCard) {
     //first click
     hasFlippedCard = true;
     firstCard = this;
-    
+
     return;
   }
   //second click
@@ -145,7 +147,7 @@ function flipCard() {
 }
 
 function checkForMatch() {
-  let isMatch = firstCard.dataset.img === secondCard.dataset.img
+  let isMatch = firstCard.dataset.img === secondCard.dataset.img;
   isMatch ? disableCards() : unflipCards();
 }
 
@@ -153,24 +155,25 @@ function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
   cnt++;
-  score.textContent = cnt
-  resetBoard()
+  score.textContent = cnt;
+  resetBoard();
 }
 
 function unflipCards() {
-  lockBoard = true
+  lockBoard = true;
   setTimeout(() => {
     firstCard.classList.toggle("flipped");
     secondCard.classList.toggle("flipped");
-    resetBoard()
-  }, 1500);
+    resetBoard();
+  }, 800);
 }
 
 function resetBoard() {
-  [hasFlippedCard, lockBoard] = [false, false]
-  [firstCard, secondCard] = [null, null]
+  [hasFlippedCard, lockBoard] = [false, false][(firstCard, secondCard)] = [
+    null,
+    null,
+  ];
 }
-
 
 let shuffledArr = [...fruits];
 let index = fruits.length;
@@ -185,8 +188,17 @@ while (index != 0) {
   ];
 }
 
-const root = document.querySelector(".root");
-
+btnStart.addEventListener("click", () => {
+    forScoreTimer.classList.remove("for_score_timer_none");
+    forScoreTimer.classList.add("for_score_timer");
+    btnStart.style.display = "none";
+    root.classList.remove("root_before");
+    root.classList.add("root");
+    container.classList.remove("container_before")
+    container.classList.add("container")
+    forH1.classList.remove("for_h1_before");
+    forH1.classList.add("for_h1");
+});
 
 function getData(data) {
   data.forEach((item) => {
@@ -202,7 +214,6 @@ function getData(data) {
     img.src = item.image;
 
     blockImg.addEventListener("click", flipCard);
-    
 
     blockImg.appendChild(img);
     mainBlockImg.appendChild(blockImg);

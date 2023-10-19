@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The march game</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon"  href="./img/img-in-back-of-card.png">
-</head>
-<body>
-    <h1>Memory game</h1>
-    <button>Start</button>
-    <p>Score: <span class="score"></span></p>
-    <p>Clock: <span class="clock"></span></p>
-    <!-- <p>Timer: <span class="timer"></span></p> -->
-    <div class="actions gameOverBlock" style="display: none;">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="./img/img-in-back-of-card.png" />
+  </head>
+  <body>
+    <div class="container_before">
+      <div class="for_h1_before">
+        <h1>Memory game</h1>
+      </div>
+      <div class="for_btn">
+        <button id="btn_start">Start</button>
+      </div>
+      <div class="for_score_timer_none">
+        <p>Score: <span class="score"></span></p>
+        <p>Clock: <span class="clock"></span></p>
+        <p>Timer: <span class="timer"></span></p>
+      </div>
+      <!-- <p>Timer: <span class="timer"></span></p> -->
+      <div class="actions gameOverBlock" style="display: none">
         <h1>Game Over</h1>
-    </div>
-    <div class="root">
-    
+      </div>
+      <div class="root_before"></div>
     </div>
     <script src="js/app.js"></script>
-</body>
+  </body>
 </html>
